@@ -2,6 +2,7 @@ import { App, FileSystemAdapter, TFile } from "obsidian";
 import { writeFileSync } from 'fs';
 
 import { JpgFile } from "./jpg";
+import { FileFormat } from "./file";
 
 export class ReaderWriter {
     constructor(private readonly app: App) {}

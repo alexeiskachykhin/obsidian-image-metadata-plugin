@@ -1,4 +1,4 @@
-interface FileFormat {
+export interface FileFormat {
     get imageDescription(): string;
     set imageDescription(s: string);
     

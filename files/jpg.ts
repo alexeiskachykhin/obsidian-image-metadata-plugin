@@ -1,3 +1,5 @@
+import { FileFormat } from "./file";
+
 const piexifjs = require('piexifjs');
 
 export class JpgFile implements FileFormat {
