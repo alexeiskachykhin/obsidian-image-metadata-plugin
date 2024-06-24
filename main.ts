@@ -1,6 +1,6 @@
-import { Plugin, TFile } from 'obsidian';
+import { FileView, Plugin, TFile } from 'obsidian';
 
-import { ReaderWriter } from 'files/readerWriter';
+import { ReaderWriter } from './files/readerWriter';
 
 export default class ImageMetadataPlugin extends Plugin {
 
@@ -23,30 +23,31 @@ export default class ImageMetadataPlugin extends Plugin {
     }
 
     async onFileOpen() {
-        const supportedExtension = ['jpg', 'jpeg'];
+        const supportedExtensions = ['jpg', 'jpeg'];
         const file = this.app.workspace.getActiveFile()!;
 
-        if (supportedExtension.contains(file.extension)) {
+        if (supportedExtensions.contains(file.extension)) {
             await this.addControls(file);
         }
     }
 
     private async addControls(file: TFile) {
-        const viewer = this.app.workspace.activeLeaf!.view.containerEl.querySelector('.view-content')!;
+        const view = this.app.workspace.getActiveViewOfType(FileView)!;
+        const viewContent = view.containerEl.querySelector('.view-content')!;
 
         const image = await this.readerWriter.readFile(file);
 
         const descriptionLabel = document.createElement('div');
         descriptionLabel.textContent = 'Description';
         descriptionLabel.style.paddingTop = "var(--size-4-4)";
-        viewer.appendChild(descriptionLabel);
+        viewContent.appendChild(descriptionLabel);
 
         const descriptionInput = document.createElement('textarea');
         descriptionInput.setAttribute("rows", "5");
         descriptionInput.style.width = "100%";
         descriptionInput.style.marginTop = "var(--size-4-1)";
         descriptionInput.value = image.imageDescription;
-        viewer.appendChild(descriptionInput);
+        viewContent.appendChild(descriptionInput);
 
         descriptionInput.addEventListener('change', () => {
             image.imageDescription = descriptionInput.value;

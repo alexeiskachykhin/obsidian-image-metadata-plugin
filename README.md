@@ -1,14 +1,16 @@
 # Image Metadata Plugin
 
-Obsidian plugin that adds image metadata editing capabilties. View and edit Exif metadata right from the image viewer screen.
+Obsidian plugin that adds image metadata editing capabilties. Annotate photes with Exif metadata right from the image viewer screen.
 
 ## What's supported?
 
-File formats: `png`, `jpg`. Metadata: `exif`.
+| Tag                   | File Formats |
+| --------------------- | ------------ |
+| Exif:ImageDescription | JPEG         |
 
 ## Development
 
-### Releasing new releases
+### Release
 
 1. Bump version in [package.json](./package.json)
 1. `npm run version`
