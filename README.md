@@ -12,11 +12,18 @@ Obsidian plugin that adds image metadata editing capabilties. Annotate photes wi
 
 ## Development
 
+```
+nvm use
+nvm ci
+npm run dev
+```
+
 ### Release
 
 1. Bump version in [package.json](./package.json)
+1. `RELEASE_VERSION=$(npm pkg get version | xargs)`
 1. `npm run version`
 1. `npm run build`
-1. `git commit -am "Release $(npm pkg get version)"`
-1. `git tag -a "$(npm pkg get version)" -m "Release $(npm pkg get version)"`
+1. `git commit -am "Release $RELEASE_VERSION"`
+1. `git tag -a "$RELEASE_VERSION" -m "Release $RELEASE_VERSION"`
 1. `git push origin main --tags`
