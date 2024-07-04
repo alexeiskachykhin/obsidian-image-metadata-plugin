@@ -37,4 +37,4 @@ npm run dev
 1. `git commit -am "Release $RELEASE_VERSION"`
 1. `git tag -a "$RELEASE_VERSION" -m "Release $RELEASE_VERSION"`
 1. `git push origin main --tags`
-1. Create a release on Github with `manifest.json`, `main.js`
+1. Create a release on Github with `manifest.json`, `main.js`, `styles.css`
