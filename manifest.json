@@ -1,10 +1,10 @@
 {
-	"id": "image-metadata",
-	"name": "Image Metadata",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Annotate photos with Exif and other metadata right from the image viewer screen.",
-	"author": "alexeiskachykhin",
-	"authorUrl": "https://github.com/alexeiskachykhin",
-	"isDesktopOnly": false
+    "id": "image-metadata",
+    "name": "Image Metadata",
+    "version": "1.0.0",
+    "minAppVersion": "0.15.0",
+    "description": "Annotate photos with Exif and other metadata right from the image viewer screen.",
+    "author": "alexeiskachykhin",
+    "authorUrl": "https://github.com/alexeiskachykhin",
+    "isDesktopOnly": true
 }
