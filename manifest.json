@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-image-metadata",
+	"id": "image-metadata",
 	"name": "Image Metadata",
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Adds image metadata editing capabilities to Obsidian",
+	"description": "Annotate photos with Exif and other metadata right from the image viewer screen.",
 	"author": "alexeiskachykhin",
 	"authorUrl": "https://github.com/alexeiskachykhin",
 	"isDesktopOnly": false
