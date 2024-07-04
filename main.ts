@@ -32,22 +32,25 @@ export default class ImageMetadataPlugin extends Plugin {
     }
 
     private async addControls(file: TFile) {
-        const view = this.app.workspace.getActiveViewOfType(FileView)!;
+        const view = this.app.workspace.getActiveViewOfType(FileView);
+
+        if (!view) {
+            return;
+        }
+
         const viewContent = view.containerEl.querySelector('.view-content')!;
 
         const image = await this.readerWriter.readFile(file);
 
-        const descriptionLabel = document.createElement('div');
-        descriptionLabel.textContent = 'Description';
-        descriptionLabel.style.paddingTop = "var(--size-4-4)";
-        viewContent.appendChild(descriptionLabel);
+        viewContent.createDiv({ 
+            cls: 'image-metadata__tag-name',
+            text: 'Description'
+        });
 
-        const descriptionInput = document.createElement('textarea');
-        descriptionInput.setAttribute("rows", "5");
-        descriptionInput.style.width = "100%";
-        descriptionInput.style.marginTop = "var(--size-4-1)";
-        descriptionInput.value = image.imageDescription;
-        viewContent.appendChild(descriptionInput);
+        const descriptionInput = viewContent.createEl('textarea', {
+            cls: 'image-metadata__tag-value',
+            text: image.imageDescription
+        });
 
         descriptionInput.addEventListener('change', () => {
             image.imageDescription = descriptionInput.value;
