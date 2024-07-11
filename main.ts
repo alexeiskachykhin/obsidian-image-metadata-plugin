@@ -24,7 +24,12 @@ export default class ImageMetadataPlugin extends Plugin {
 
     async onFileOpen() {
         const supportedExtensions = ['jpg', 'jpeg'];
-        const file = this.app.workspace.getActiveFile()!;
+        
+        const file = this.app.workspace.getActiveFile();
+
+        if (!file) {
+            return;
+        }
 
         if (supportedExtensions.contains(file.extension)) {
             await this.addControls(file);
@@ -38,7 +43,11 @@ export default class ImageMetadataPlugin extends Plugin {
             return;
         }
 
-        const viewContent = view.containerEl.querySelector('.view-content')!;
+        const viewContent = view.containerEl.querySelector('.view-content');
+
+        if (!viewContent) {
+            return;
+        }
 
         const image = await this.readerWriter.readFile(file);
 
