@@ -13,11 +13,11 @@ export class ReaderWriter {
     }
 
     public async writeFile(file: TFile, image: FileFormat) {
-        if (!this.canWrite) {
+        if (!(this.app.vault.adapter instanceof FileSystemAdapter)) {
             throw new Error('File system is not writable');
         }
 
-        const filePath = (this.app.vault.adapter as FileSystemAdapter).getFullPath(file.path);
+        const filePath = this.app.vault.adapter.getFullPath(file.path);
         writeFileSync(filePath, image.toBuffer());
     }
 
