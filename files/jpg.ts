@@ -1,9 +1,9 @@
+import * as piexifjs from 'piexifjs';
+
 import { FileFormat } from "./file";
 
-const piexifjs = require('piexifjs');
-
 export class JpgFile implements FileFormat {
-    private readonly metadata: any;
+    private readonly metadata: piexifjs.ExifDict;
     private readonly dataUrl: string;
 
     constructor(data: Buffer) {
