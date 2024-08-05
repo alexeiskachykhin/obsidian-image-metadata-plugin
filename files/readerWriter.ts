@@ -3,13 +3,27 @@ import { writeFileSync } from 'fs';
 
 import { JpgFile } from "./jpg";
 import { FileFormat } from "./file";
+import { PngFile } from "./png";
+
+
 
 export class ReaderWriter {
-    constructor(private readonly app: App) {}
+    public readonly supportedExtensions = ['jpg', 'jpeg', 'png'];
+
+    constructor(private readonly app: App) { }
 
     public async readFile(file: TFile): Promise<FileFormat> {
         const data = Buffer.from(await this.app.vault.readBinary(file));
-        return new JpgFile(data);
+
+        switch (file.extension) {
+            case 'jpeg':
+            case 'jpg':
+                return new JpgFile(data);
+            case 'png':
+                return new PngFile(data);
+            default:
+                throw new Error(`Unsupported file extension ${file.extension}`);
+        }
     }
 
     public async writeFile(file: TFile, image: FileFormat) {

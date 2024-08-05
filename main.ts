@@ -23,15 +23,13 @@ export default class ImageMetadataPlugin extends Plugin {
     }
 
     async onFileOpen() {
-        const supportedExtensions = ['jpg', 'jpeg'];
-        
         const file = this.app.workspace.getActiveFile();
 
         if (!file) {
             return;
         }
 
-        if (supportedExtensions.contains(file.extension)) {
+        if (this.readerWriter.supportedExtensions.contains(file.extension)) {
             await this.addControls(file);
         }
     }
@@ -51,7 +49,7 @@ export default class ImageMetadataPlugin extends Plugin {
 
         const image = await this.readerWriter.readFile(file);
 
-        viewContent.createDiv({ 
+        viewContent.createDiv({
             cls: 'image-metadata__tag-name',
             text: 'Description'
         });

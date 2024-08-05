@@ -13,6 +13,7 @@ Obsidian plugin that adds image metadata editing capabilties. Annotate photos wi
 | Tag                   | File Formats |
 | --------------------- | ------------ |
 | Exif:ImageDescription | JPEG         |
+| XMP:dc:description    | PNG          |
 
 ## Contact
 
