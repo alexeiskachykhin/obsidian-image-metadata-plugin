@@ -1,6 +1,6 @@
 {
     "name": "obsidian-image-metadata-plugin",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Adds image metadata editing capabilities to Obsidian",
     "main": "main.js",
     "scripts": {
