@@ -1,8 +1,8 @@
 import extractChunks from 'png-chunks-extract';
 import encodeChunks from 'png-chunks-encode';
+import { decodeSync, encodeSync, ITxtChunk } from "png-chunk-itxt";
 
 import { FileFormat } from "./file";
-import { decode, encode, ITxtChunk } from "./png-itxt-chunk";
 import { Xmp } from "../metadata/xmp";
 
 interface RawChunk {
@@ -30,7 +30,7 @@ export class PngFile implements FileFormat {
                 continue;
             }
 
-            const iTxtChunkData = decode(chunk.data);
+            const iTxtChunkData = decodeSync(chunk.data);
 
             if (iTxtChunkData.keyword === "XML:com.adobe.xmp") {
                 this.xmpChunkIndex = i;
@@ -55,7 +55,7 @@ export class PngFile implements FileFormat {
 
             this.chunks.splice(this.xmpChunkIndex, 0, {
                 name: "iTXt",
-                data: encode(this.xmpChunkData)
+                data: encodeSync(this.xmpChunkData)
             });
         }
     }
@@ -68,7 +68,7 @@ export class PngFile implements FileFormat {
         this.xmp.setAltArrayProperty("dc:description", s);
 
         this.xmpChunkData.text = this.xmp.toString();
-        this.chunks[this.xmpChunkIndex].data = encode(this.xmpChunkData);
+        this.chunks[this.xmpChunkIndex].data = encodeSync(this.xmpChunkData);
     }
 
     toBuffer(): Buffer {

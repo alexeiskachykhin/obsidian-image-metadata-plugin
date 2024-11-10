@@ -1,14 +1,13 @@
 import { App, FileSystemAdapter, TFile } from "obsidian";
 import { writeFileSync } from 'fs';
 
-import { JpgFile } from "./jpg";
 import { FileFormat } from "./file";
+import { JpgFile } from "./jpg";
 import { PngFile } from "./png";
-
-
+import { WebpFile } from "./webp";
 
 export class ReaderWriter {
-    public readonly supportedExtensions = ['jpg', 'jpeg', 'png'];
+    public readonly supportedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
 
     constructor(private readonly app: App) { }
 
@@ -21,6 +20,8 @@ export class ReaderWriter {
                 return new JpgFile(data);
             case 'png':
                 return new PngFile(data);
+            case 'webp':
+                return new WebpFile(data);
             default:
                 throw new Error(`Unsupported file extension ${file.extension}`);
         }

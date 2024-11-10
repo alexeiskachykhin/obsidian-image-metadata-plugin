@@ -46,6 +46,10 @@ export class Xmp {
         return new XMLSerializer().serializeToString(this.dom);
     }
 
+    public toBuffer(): Buffer {
+        return Buffer.from(this.toString());
+    }
+
     private normalizeXmp(xmp: Document): Document {
         const xmpScaffoldingDoc = new DOMParser().parseFromString(xmpScaffolding, "text/xml");
 

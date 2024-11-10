@@ -28,6 +28,7 @@
         "@xmldom/xmldom": "^0.8.10",
         "binary-parser": "^2.2.1",
         "piexifjs": "^1.0.6",
+        "png-chunk-itxt": "^1.0.0",
         "png-chunks-encode": "^1.0.0",
         "png-chunks-extract": "^1.0.0"
     }
